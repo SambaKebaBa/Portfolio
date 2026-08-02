@@ -29,13 +29,16 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
       const checkRouteEnabled = () => {
         if (!pathname) return false;
 
-        if (pathname in routes) {
-          return routes[pathname as keyof typeof routes];
+        // Normalise le trailing slash (output: export + trailingSlash) : "/about/" -> "/about"
+        const p = pathname !== "/" && pathname.endsWith("/") ? pathname.slice(0, -1) : pathname;
+
+        if (p in routes) {
+          return routes[p as keyof typeof routes];
         }
 
         const dynamicRoutes = ["/blog", "/work"] as const;
         for (const route of dynamicRoutes) {
-          if (pathname?.startsWith(route) && routes[route]) {
+          if (p.startsWith(route) && routes[route]) {
             return true;
           }
         }
