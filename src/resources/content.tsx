@@ -199,14 +199,13 @@ const gallery: Gallery = {
   title: `Galerie – ${person.name}`,
   description: `Aperçus de rapports par ${person.name}`,
   images: [
-    { src: "/Portoflio3/images/gallery/horizontal-1.jpg", alt: "image", orientation: "horizontal" },
-    { src: "/Portoflio3/images/gallery/vertical-4.jpg", alt: "image", orientation: "vertical" },
-    { src: "/Portoflio3/images/gallery/horizontal-3.jpg", alt: "image", orientation: "horizontal" },
-    { src: "/Portoflio3/images/gallery/vertical-1.jpg", alt: "image", orientation: "vertical" },
-    { src: "/Portoflio3/images/gallery/vertical-2.jpg", alt: "image", orientation: "vertical" },
-    { src: "/Portoflio3/images/gallery/horizontal-2.jpg", alt: "image", orientation: "horizontal" },
-    { src: "/Portoflio3/images/gallery/horizontal-4.jpg", alt: "image", orientation: "horizontal" },
-    { src: "/Portoflio3/images/gallery/vertical-3.jpg", alt: "image", orientation: "vertical" },
+    { src: "/Portoflio3/images/samba/meteo.png", alt: "Dashboard Suivi météo", orientation: "horizontal" },
+    { src: "/Portoflio3/images/samba/ventes.png", alt: "Dashboard Ventes & Performance", orientation: "horizontal" },
+    { src: "/Portoflio3/images/samba/catalogue.png", alt: "Catalogue des véhicules", orientation: "horizontal" },
+    { src: "/Portoflio3/images/samba/projets.png", alt: "Suivi des projets", orientation: "horizontal" },
+    { src: "/Portoflio3/images/samba/uber.png", alt: "Dashboard Uber", orientation: "horizontal" },
+    { src: "/Portoflio3/images/samba/rh.png", alt: "Salaires & Budget RH", orientation: "horizontal" },
+    { src: "/Portoflio3/images/samba/commentaires.png", alt: "Commentaires en temps réel", orientation: "horizontal" },
   ],
 };
 
