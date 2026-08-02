@@ -6,7 +6,7 @@ const person: Person = {
   lastName: "Ba",
   name: `Samba Kéba Ba`,
   role: "Développeur BI",
-  avatar: "/Portoflio3/images/avatar.jpg",
+  avatar: "/Portoflio3/images/samba/avatar.jpg",
   email: "bpanopi@gmail.com",
   location: "America/Toronto", // IANA tz — Québec (QC)
   languages: ["Français", "Anglais"],
