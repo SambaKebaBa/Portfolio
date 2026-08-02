@@ -6,7 +6,7 @@ const person: Person = {
   lastName: "Ba",
   name: `Samba Kéba Ba`,
   role: "Développeur BI",
-  avatar: "/images/avatar.jpg",
+  avatar: "/Portoflio3/images/avatar.jpg",
   email: "bpanopi@gmail.com",
   location: "America/Toronto", // IANA tz — Québec (QC)
   languages: ["Français", "Anglais"],
@@ -42,7 +42,7 @@ const social: Social = [
 
 const home: Home = {
   path: "/",
-  image: "/images/og/home.jpg",
+  image: "/Portoflio3/images/og/home.jpg",
   label: "Accueil",
   title: `${person.name} — ${person.role}`,
   description: `Portfolio de ${person.name}, ${person.role} : Power BI, Databricks, Microsoft Fabric.`,
@@ -199,14 +199,14 @@ const gallery: Gallery = {
   title: `Galerie – ${person.name}`,
   description: `Aperçus de rapports par ${person.name}`,
   images: [
-    { src: "/images/gallery/horizontal-1.jpg", alt: "image", orientation: "horizontal" },
-    { src: "/images/gallery/vertical-4.jpg", alt: "image", orientation: "vertical" },
-    { src: "/images/gallery/horizontal-3.jpg", alt: "image", orientation: "horizontal" },
-    { src: "/images/gallery/vertical-1.jpg", alt: "image", orientation: "vertical" },
-    { src: "/images/gallery/vertical-2.jpg", alt: "image", orientation: "vertical" },
-    { src: "/images/gallery/horizontal-2.jpg", alt: "image", orientation: "horizontal" },
-    { src: "/images/gallery/horizontal-4.jpg", alt: "image", orientation: "horizontal" },
-    { src: "/images/gallery/vertical-3.jpg", alt: "image", orientation: "vertical" },
+    { src: "/Portoflio3/images/gallery/horizontal-1.jpg", alt: "image", orientation: "horizontal" },
+    { src: "/Portoflio3/images/gallery/vertical-4.jpg", alt: "image", orientation: "vertical" },
+    { src: "/Portoflio3/images/gallery/horizontal-3.jpg", alt: "image", orientation: "horizontal" },
+    { src: "/Portoflio3/images/gallery/vertical-1.jpg", alt: "image", orientation: "vertical" },
+    { src: "/Portoflio3/images/gallery/vertical-2.jpg", alt: "image", orientation: "vertical" },
+    { src: "/Portoflio3/images/gallery/horizontal-2.jpg", alt: "image", orientation: "horizontal" },
+    { src: "/Portoflio3/images/gallery/horizontal-4.jpg", alt: "image", orientation: "horizontal" },
+    { src: "/Portoflio3/images/gallery/vertical-3.jpg", alt: "image", orientation: "vertical" },
   ],
 };
 
