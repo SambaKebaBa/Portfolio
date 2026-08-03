@@ -3,7 +3,7 @@
 Portfolio personnel de **Samba Kéba Ba**, développeur BI (Power BI, Databricks, Microsoft Fabric).
 Application Next.js exportée en statique et hébergée sur GitHub Pages.
 
-**En ligne :** https://sambakebaba.github.io/Portoflio3/
+**En ligne :** https://sambakebaba.github.io/Portfolio/
 
 ---
 
@@ -17,7 +17,7 @@ npm run build    # export statique -> ./out
 
 Déploiement **automatique** sur GitHub Pages via `.github/workflows/deploy.yml` à chaque push sur `main` (~1-2 min).
 
-> Note : en local les images peuvent apparaître cassées car leur chemin est préfixé `/Portoflio3`
+> Note : en local les images peuvent apparaître cassées car leur chemin est préfixé `/Portfolio`
 > (le nom du repo). C'est normal ; elles s'affichent correctement sur l'URL GitHub Pages.
 
 ---
@@ -91,7 +91,7 @@ title: "Titre du projet"
 publishedAt: "2025-07-01"
 summary: "Résumé court affiché sur la carte et l'accueil."
 images:
-  - "/Portoflio3/images/samba/nouveau.png"
+  - "/Portfolio/images/samba/nouveau.png"
 tag: "Power BI"
 ---
 
@@ -105,7 +105,7 @@ Description du projet en un ou deux paragraphes.
 **4.** Commit + push (ou upload via github.com). L'Action redéploie automatiquement.
 
 ### Règles importantes
-- **Chemin image** : toujours préfixer `/Portoflio3/...` sinon l'image renvoie 404 sur GitHub Pages.
+- **Chemin image** : toujours préfixer `/Portfolio/...` sinon l'image renvoie 404 sur GitHub Pages.
 - **`publishedAt`** : format `AAAA-MM-JJ`. Le plus récent passe en premier (et en vedette sur l'accueil).
 - **iframe** : syntaxe JSX → `style={{...}}` (accolades), `allowFullScreen` avec un F majuscule.
 - Projet sans rapport public (write-back) : **enlève la ligne `<iframe>`**.
