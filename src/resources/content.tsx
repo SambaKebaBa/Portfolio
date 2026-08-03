@@ -1,4 +1,4 @@
-import { About, Blog, Gallery, Home, Newsletter, Person, Social, Work } from "@/types";
+import { About, Gallery, Home, Person, Social, Work } from "@/types";
 import { Line, Row, Text } from "@once-ui-system/core";
 
 const person: Person = {
@@ -11,12 +11,6 @@ const person: Person = {
   location: "America/Montreal", // IANA tz valide — Québec (heure de l'Est)
   languages: ["Français", "Anglais"],
   locale: "fr",
-};
-
-const newsletter: Newsletter = {
-  display: false,
-  title: <>Infolettre de {person.firstName}</>,
-  description: <></>,
 };
 
 const social: Social = [
@@ -179,13 +173,6 @@ const about: About = {
   },
 };
 
-const blog: Blog = {
-  path: "/blog",
-  label: "Blog",
-  title: "Notes BI & data",
-  description: `Ce que ${person.name} explore en ce moment`,
-};
-
 const work: Work = {
   path: "/work",
   label: "Projets",
@@ -209,4 +196,4 @@ const gallery: Gallery = {
   ],
 };
 
-export { person, social, newsletter, home, about, blog, work, gallery };
+export { person, social, home, about, work, gallery };
