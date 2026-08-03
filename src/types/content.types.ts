@@ -185,6 +185,18 @@ export interface About extends BasePageConfig {
       description: React.ReactNode;
     }>;
   };
+  /** Certifications section */
+  certifications?: {
+    display: boolean;
+    title: string;
+    items: Array<{
+      name: string;
+      issuer: string;
+      date: string;
+      link: string;
+      image: string;
+    }>;
+  };
   /** Technical skills section */
   technical: {
     /** Whether to display technical skills section */
