@@ -91,7 +91,7 @@ const about: About = {
   },
   work: {
     display: true,
-    title: "Expérience",
+    title: "Expériences",
     experiences: [
       {
         company: "Canac – Siège social, Québec (QC)",
@@ -129,7 +129,7 @@ const about: About = {
   },
   studies: {
     display: true,
-    title: "Formation",
+    title: "Études",
     institutions: [
       {
         name: "Université du Québec en Outaouais",
@@ -138,6 +138,19 @@ const about: About = {
       {
         name: "Groupe scolaire Educazur, Dakar",
         description: <>DEC en sciences mathématiques et expérimentales (2019).</>,
+      },
+    ],
+  },
+  certifications: {
+    display: true,
+    title: "Certifications",
+    items: [
+      {
+        name: "Introduction to Data Analytics",
+        issuer: "IBM · Coursera",
+        date: "Janvier 2024",
+        link: "https://www.coursera.org/account/accomplishments/verify/NFK75XGG96WJ",
+        image: "/Portfolio/images/samba/cert-data-analytics.png",
       },
     ],
   },

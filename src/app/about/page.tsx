@@ -11,6 +11,7 @@ import {
   Meta,
   Schema,
   Row,
+  SmartLink,
 } from "@once-ui-system/core";
 import { baseURL, about, person, social } from "@/resources";
 import TableOfContents from "@/components/about/TableOfContents";
@@ -48,6 +49,11 @@ export default function About() {
       title: about.technical.title,
       display: about.technical.display,
       items: about.technical.skills.map((skill) => skill.title),
+    },
+    {
+      title: about.certifications?.title || "",
+      display: about.certifications?.display || false,
+      items: about.certifications?.items.map((c) => c.name) || [],
     },
   ];
   return (
@@ -328,6 +334,46 @@ export default function About() {
                             />
                           </Row>
                         ))}
+                      </Row>
+                    )}
+                  </Column>
+                ))}
+              </Column>
+            </>
+          )}
+
+          {about.certifications?.display && (
+            <>
+              <Heading
+                as="h2"
+                id={about.certifications.title}
+                variant="display-strong-s"
+                marginTop="40"
+                marginBottom="m"
+              >
+                {about.certifications.title}
+              </Heading>
+              <Column fillWidth gap="l">
+                {about.certifications.items.map((cert, index) => (
+                  <Column key={`${cert.name}-${index}`} fillWidth gap="8">
+                    <Text id={cert.name} variant="heading-strong-l">
+                      {cert.name}
+                    </Text>
+                    <Text variant="heading-default-xs" onBackground="neutral-weak">
+                      {cert.issuer} — {cert.date}
+                    </Text>
+                    {cert.link && (
+                      <SmartLink
+                        href={cert.link}
+                        style={{ width: "fit-content" }}
+                        suffixIcon="arrowUpRightFromSquare"
+                      >
+                        <Text variant="body-default-s">Voir le certificat</Text>
+                      </SmartLink>
+                    )}
+                    {cert.image && (
+                      <Row border="neutral-medium" radius="m" maxWidth={24} marginTop="8">
+                        <Media enlarge radius="m" aspectRatio="4 / 3" alt={cert.name} src={cert.image} />
                       </Row>
                     )}
                   </Column>

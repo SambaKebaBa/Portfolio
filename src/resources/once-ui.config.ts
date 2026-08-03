@@ -68,10 +68,10 @@ const fonts: FontsConfig = {
 
 // default customization applied to the HTML in the main layout.tsx
 const style: StyleConfig = {
-  theme: "light", // dark | light | system
-  neutral: "slate", // sand | gray | slate | mint | rose | dusk | custom
-  brand: "violet", // nos tokens : violet primaire (réf datatraining)
-  accent: "emerald", // menthe secondaire
+  theme: "system", // dark | light | system
+  neutral: "gray", // sand | gray | slate | mint | rose | dusk | custom
+  brand: "cyan", // couleurs du template original
+  accent: "red",
   solid: "contrast", // color | contrast
   solidStyle: "flat", // flat | plastic
   border: "playful", // rounded | playful | conservative | sharp
