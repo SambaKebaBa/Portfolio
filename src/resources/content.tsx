@@ -6,7 +6,7 @@ const person: Person = {
   lastName: "Ba",
   name: `Samba Kéba Ba`,
   role: "Développeur BI",
-  avatar: "/Portoflio3/images/samba/avatar.jpg",
+  avatar: "/Portfolio/images/samba/avatar.jpg",
   email: "bpanopi@gmail.com",
   location: "America/Montreal", // IANA tz valide — Québec (heure de l'Est)
   languages: ["Français", "Anglais"],
@@ -36,7 +36,7 @@ const social: Social = [
 
 const home: Home = {
   path: "/",
-  image: "/Portoflio3/images/samba/meteo.png",
+  image: "/Portfolio/images/samba/meteo.png",
   label: "Accueil",
   title: `${person.name} — ${person.role}`,
   description: `Portfolio de ${person.name}, ${person.role} : Power BI, Databricks, Microsoft Fabric.`,
@@ -186,13 +186,13 @@ const gallery: Gallery = {
   title: `Galerie – ${person.name}`,
   description: `Aperçus de rapports par ${person.name}`,
   images: [
-    { src: "/Portoflio3/images/samba/meteo.png", alt: "Dashboard Suivi météo", orientation: "horizontal" },
-    { src: "/Portoflio3/images/samba/ventes.png", alt: "Dashboard Ventes & Performance", orientation: "horizontal" },
-    { src: "/Portoflio3/images/samba/catalogue.png", alt: "Catalogue des véhicules", orientation: "horizontal" },
-    { src: "/Portoflio3/images/samba/projets.png", alt: "Suivi des projets", orientation: "horizontal" },
-    { src: "/Portoflio3/images/samba/uber.png", alt: "Dashboard Uber", orientation: "horizontal" },
-    { src: "/Portoflio3/images/samba/rh.png", alt: "Salaires & Budget RH", orientation: "horizontal" },
-    { src: "/Portoflio3/images/samba/commentaires.png", alt: "Commentaires en temps réel", orientation: "horizontal" },
+    { src: "/Portfolio/images/samba/meteo.png", alt: "Dashboard Suivi météo", orientation: "horizontal" },
+    { src: "/Portfolio/images/samba/ventes.png", alt: "Dashboard Ventes & Performance", orientation: "horizontal" },
+    { src: "/Portfolio/images/samba/catalogue.png", alt: "Catalogue des véhicules", orientation: "horizontal" },
+    { src: "/Portfolio/images/samba/projets.png", alt: "Suivi des projets", orientation: "horizontal" },
+    { src: "/Portfolio/images/samba/uber.png", alt: "Dashboard Uber", orientation: "horizontal" },
+    { src: "/Portfolio/images/samba/rh.png", alt: "Salaires & Budget RH", orientation: "horizontal" },
+    { src: "/Portfolio/images/samba/commentaires.png", alt: "Commentaires en temps réel", orientation: "horizontal" },
   ],
 };
 
