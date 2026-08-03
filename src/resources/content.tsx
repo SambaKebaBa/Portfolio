@@ -8,7 +8,7 @@ const person: Person = {
   role: "Développeur BI",
   avatar: "/Portoflio3/images/samba/avatar.jpg",
   email: "bpanopi@gmail.com",
-  location: "Canada/Québec", // IANA tz — Québec (QC)
+  location: "America/Montreal", // IANA tz valide — Québec (heure de l'Est)
   languages: ["Français", "Anglais"],
   locale: "fr",
 };
