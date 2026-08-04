@@ -117,6 +117,13 @@ export default async function Project({
           </Text>
         </Row>
       </Row>
+      {post.metadata.link && (
+        <Row fillWidth maxWidth="m" horizontal="end" style={{ margin: "0 auto" }}>
+          <SmartLink href={post.metadata.link} suffixIcon="arrowUpRightFromSquare">
+            <Text variant="label-default-s">Voir le projet</Text>
+          </SmartLink>
+        </Row>
+      )}
       <Column style={{ margin: "auto" }} as="article" maxWidth="m">
         <CustomMDX source={post.content} />
       </Column>
