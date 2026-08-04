@@ -56,8 +56,7 @@ const home: Home = {
   },
   subline: (
     <>
-      Je suis {person.firstName}, {person.role.toLowerCase()} chez{" "}
-      <Text as="span" size="xl" weight="strong">Canac</Text>. Je conçois des rapports Power BI de bout en bout, <br /> de la donnée brute jusqu'à la décision.
+      Je suis {person.firstName}, développeur BI. Je conçois des rapports Power BI de bout en bout, <br /> de la donnée brute jusqu'à la décision.
     </>
   ),
 };

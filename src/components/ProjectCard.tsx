@@ -72,15 +72,6 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                   <Text variant="body-default-s">Voir le rapport</Text>
                 </SmartLink>
               )}
-              {link && (
-                <SmartLink
-                  suffixIcon="arrowUpRightFromSquare"
-                  style={{ margin: "0", width: "fit-content" }}
-                  href={link}
-                >
-                  <Text variant="body-default-s">Voir le projet</Text>
-                </SmartLink>
-              )}
             </Flex>
           </Column>
         )}
