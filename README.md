@@ -1,7 +1,7 @@
 # Portfolio — Samba Kéba Ba
 
 Portfolio personnel de **Samba Kéba Ba**, développeur BI (Power BI, Databricks, Microsoft Fabric).
-Application Next.js exportée en statique et hébergée sur GitHub Pages.
+Application Next.js exportée en statique, hébergée sur GitHub Pages.
 
 **En ligne :** https://sambakebaba.github.io/Portfolio/
 
@@ -16,106 +16,123 @@ npm run build    # export statique -> ./out
 ```
 
 Déploiement **automatique** sur GitHub Pages via `.github/workflows/deploy.yml` à chaque push sur `main` (~1-2 min).
+Réglage requis une fois : **Settings → Pages → Source = GitHub Actions**.
 
-> Note : en local les images peuvent apparaître cassées car leur chemin est préfixé `/Portfolio`
-> (le nom du repo). C'est normal ; elles s'affichent correctement sur l'URL GitHub Pages.
+> En local, les images peuvent sembler cassées : leur chemin est préfixé `/Portfolio` (nom du repo).
+> C'est normal, elles s'affichent bien sur l'URL GitHub Pages. Si tu **renommes le repo**, remplace
+> `/Portfolio/` par le nouveau nom dans `content.tsx` et les `.mdx`.
 
 ---
 
-## Structure du projet
-
-> `node_modules/`, `.next/`, `out/` sont générés automatiquement et ignorés par git.
+## Structure
 
 ```
 .
-├── .github/workflows/deploy.yml   # Action : build + déploiement GitHub Pages
-├── next.config.mjs                # Config Next : export statique, basePath, MDX, images
-├── package.json / package-lock    # Dépendances + scripts (dev/build/start)
-├── tsconfig.json                  # Config TypeScript
+├── .github/workflows/deploy.yml     # Action : build + déploiement GitHub Pages
+├── next.config.mjs                  # export statique, basePath, MDX, images
+├── package.json / package-lock      # dépendances + scripts
 ├── public/
-│   └── images/samba/              # Avatar + captures des dashboards (assets servis tels quels)
+│   ├── images/
+│   │   ├── avatar.jpg               # photo de profil
+│   │   ├── rapports/                # couvertures des rapports (noms complets)
+│   │   └── certifications/          # images des certifications (noms complets)
+│   └── videos/                      # vidéos de démonstration
 └── src/
-    ├── app/                       # Les pages (1 dossier = 1 route)
-    │   ├── layout.tsx             # Gabarit global (header, footer, thème)
-    │   ├── page.tsx               # Accueil (/)
-    │   ├── about/page.tsx         # À propos (/about)
-    │   ├── gallery/page.tsx       # Galerie (/gallery)
-    │   ├── work/page.tsx          # Liste des projets (/work)
-    │   ├── work/[slug]/page.tsx   # Gabarit d'une page projet (/work/xxx)
-    │   ├── work/projects/*.mdx    # CONTENU des projets (1 fichier = 1 projet)
-    │   ├── not-found.tsx          # Page 404
-    │   ├── robots.ts              # Génère robots.txt (SEO)
-    │   └── sitemap.ts             # Génère sitemap.xml (SEO)
-    ├── components/                # Briques d'interface réutilisables
-    │   ├── Header / Footer        # Navigation + pied de page
-    │   ├── RouteGuard.tsx         # Autorise/bloque les pages selon `routes`
-    │   ├── ProjectCard.tsx        # Carte d'un projet
-    │   ├── work/Projects.tsx      # Grille des projets
-    │   ├── gallery/GalleryView    # Affichage galerie
-    │   ├── about/TableOfContents  # Sommaire À propos
-    │   ├── mdx.tsx                # Rendu du Markdown des projets
-    │   ├── ThemeToggle / Providers# Thème clair/sombre
-    │   └── index.ts               # Exports regroupés
-    ├── resources/                 # TON contenu + réglages visuels
-    │   ├── content.tsx            # ⭐ Nom, à-propos, expérience, formation, compétences, liens, galerie
-    │   ├── once-ui.config.ts      # Thème, couleurs, polices, routes actives, baseURL
-    │   ├── custom.css             # CSS perso
-    │   └── icons.ts               # Icônes disponibles
-    ├── types/                     # Définitions TypeScript (forme des données)
-    └── utils/                     # Fonctions utilitaires (lecture des .mdx, dates)
+    ├── app/
+    │   ├── layout.tsx               # gabarit global (header, footer, thème)
+    │   ├── icon.jpg                 # favicon (onglet + aperçu de lien)
+    │   ├── page.tsx                 # ACCUEIL (affiche uniquement le projet phare)
+    │   ├── about/page.tsx           # À propos (intro, expériences, études, certifications, compétences)
+    │   ├── work/page.tsx            # liste des projets (/work)
+    │   ├── work/[slug]/page.tsx     # gabarit d'une page rapport
+    │   ├── work/projects/*.mdx      # CONTENU des rapports (1 fichier = 1 rapport)
+    │   ├── gallery/page.tsx         # galerie
+    │   ├── not-found.tsx / robots.ts / sitemap.ts
+    ├── components/                  # Header, Footer, RouteGuard, ProjectCard, mdx, etc.
+    ├── resources/
+    │   ├── content.tsx              # ⭐ nom, à-propos, expériences, études, certifications, compétences, galerie
+    │   └── once-ui.config.ts        # thème, couleurs, polices, routes, baseURL
+    ├── types/  utils/
 ```
 
 ### Ce que tu édites au quotidien
 | Pour changer... | Fichier / dossier |
 |---|---|
-| Nom, à-propos, expérience, compétences, liens | `src/resources/content.tsx` |
-| Tes rapports (projets) | `src/app/work/projects/*.mdx` |
-| Tes images | `public/images/samba/` |
+| Nom, à-propos, expériences, études, certifications, compétences | `src/resources/content.tsx` |
+| Les rapports (projets) | `src/app/work/projects/*.mdx` |
+| Couvertures des rapports | `public/images/rapports/` |
+| Images des certifications | `public/images/certifications/` |
+| Photo de profil / favicon | `public/images/avatar.jpg` et `src/app/icon.jpg` |
+| Vidéos de démo | `public/videos/` |
 | Couleurs / thème / polices | `src/resources/once-ui.config.ts` |
+
+> **Accueil** : ne montre que le **projet phare** (le rapport avec la date `publishedAt` la plus récente).
+> Tous les rapports sont sur la page **Projets** (`/work`).
 
 ---
 
-## Ajouter un nouveau projet
+## Ajouter un nouveau rapport
 
-Un projet = **un fichier `.mdx`**. Pas besoin de toucher au code.
+Un rapport = **un fichier `.mdx`**. Pas besoin de toucher au code.
 
-**1.** Dépose la capture du rapport dans `public/images/samba/` (ex. `nouveau.png`).
+**1.** Dépose la capture dans `public/images/rapports/` (nom complet, ex. `Mon nouveau rapport.png`).
 
-**2.** Crée `src/app/work/projects/mon-projet.mdx` (le nom du fichier = l'URL `/work/mon-projet`).
+**2.** Crée `src/app/work/projects/mon-nouveau-rapport.mdx` (le nom du fichier = l'URL `/work/mon-nouveau-rapport`).
 
 **3.** Colle ce modèle :
 
 ```mdx
 ---
-title: "Titre du projet"
+title: "Titre complet du rapport"
 publishedAt: "2025-07-01"
-summary: "Résumé court affiché sur la carte et l'accueil."
+summary: "Résumé court affiché sur la carte."
 images:
-  - "/Portfolio/images/samba/nouveau.png"
+  - "/Portfolio/images/rapports/Mon nouveau rapport.png"
 tag: "Power BI"
+link: "LIEN_PUBLISH_TO_WEB"
 ---
 
-Description du projet en un ou deux paragraphes.
+Description en un ou deux paragraphes.
 
-**Stack :** Power BI · Power Query (M) · DAX
+**Technologies :** Power BI · Power Query (M) · DAX
+
+<div style={{textAlign:'right',marginBottom:'0.5rem'}}><a href="LIEN_PUBLISH_TO_WEB">Ouvrir en plein écran <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{verticalAlign:'-2px',marginLeft:'4px'}}><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></a></div>
 
 <iframe src="LIEN_PUBLISH_TO_WEB" style={{width:'100%',aspectRatio:'16 / 9',border:0,borderRadius:12}} allowFullScreen />
 ```
 
-**4.** Commit + push (ou upload via github.com). L'Action redéploie automatiquement.
+Pour une **vidéo** au lieu d'un rapport public (write-back), remplace l'iframe par :
+```mdx
+<video controls playsInline style={{width:'100%',borderRadius:12}} src="/Portfolio/videos/Ma video.mp4"></video>
+```
 
 ### Règles importantes
-- **Chemin image** : toujours préfixer `/Portfolio/...` sinon l'image renvoie 404 sur GitHub Pages.
-- **`publishedAt`** : format `AAAA-MM-JJ`. Le plus récent passe en premier (et en vedette sur l'accueil).
-- **iframe** : syntaxe JSX → `style={{...}}` (accolades), `allowFullScreen` avec un F majuscule.
-- Projet sans rapport public (write-back) : **enlève la ligne `<iframe>`**.
-- Enregistre le fichier en **UTF-8** (accents).
+- **Chemins** : toujours préfixer `/Portfolio/...` (sinon 404 sur GitHub Pages).
+- **`publishedAt`** : `AAAA-MM-JJ`. Le plus récent passe en premier (et en vedette sur l'accueil).
+- **JSX dans MDX** : `style={{...}}` (accolades), `allowFullScreen` / `strokeWidth` en camelCase.
+- Enregistrer en **UTF-8** (accents).
+
+---
+
+## Ajouter une certification
+
+Dans `src/resources/content.tsx`, section `about.certifications.items`, ajoute un bloc :
+
+```ts
+{
+  name: "Nom complet de la certification",
+  issuer: "IBM · Coursera",
+  date: "Mois AAAA",
+  link: "https://coursera.org/verify/XXXX",
+  image: "/Portfolio/images/certifications/Nom complet de la certification.jpg",
+},
+```
+
+Et dépose l'image dans `public/images/certifications/` avec le **nom complet** de la certification.
 
 ---
 
 ## Déploiement
 
-Poussé sur `main` → `.github/workflows/deploy.yml` construit (`npm ci` + `next build`), ajoute `.nojekyll`,
-et publie `out/` sur GitHub Pages. `basePath` est fixé automatiquement au nom du repo.
-
-Réglage requis une fois : **Settings → Pages → Source = GitHub Actions**.
+Push sur `main` → `deploy.yml` construit (`npm ci` + `next build`), ajoute `.nojekyll`, publie `out/` sur Pages.
+`basePath` = nom du repo (auto). Une fois : **Settings → Pages → Source = GitHub Actions**.
