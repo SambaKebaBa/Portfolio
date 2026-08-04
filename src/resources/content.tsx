@@ -36,7 +36,7 @@ const social: Social = [
 
 const home: Home = {
   path: "/",
-  image: "/Portfolio/images/rapports/Suivi météo - Prévisions et qualité de l'air.png",
+  image: "/Portfolio/images/arriere plan.png",
   label: "Accueil",
   title: `${person.name} — ${person.role}`,
   description: `Portfolio de ${person.name}, ${person.role} : Power BI, Databricks, Microsoft Fabric.`,
