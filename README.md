@@ -34,9 +34,9 @@ Réglage requis une fois : **Settings → Pages → Source = GitHub Actions**.
 ├── public/
 │   ├── images/
 │   │   ├── avatar.jpg               # photo de profil
-│   │   ├── rapports/                # couvertures des rapports (noms complets)
-│   │   └── certifications/          # images des certifications (noms complets)
-│   └── videos/                      # vidéos de démonstration
+│   │   ├── arriere-plan.png
+│   │   └── certifications/          # images des certifications (kebab-case)
+│   └── projects/<slug>/             # assets d'un rapport : cover.png (+ demo.mp4)
 └── src/
     ├── app/
     │   ├── layout.tsx               # gabarit global (header, footer, thème)
@@ -45,10 +45,15 @@ Réglage requis une fois : **Settings → Pages → Source = GitHub Actions**.
     │   ├── about/page.tsx           # À propos (intro, expériences, études, certifications, compétences)
     │   ├── work/page.tsx            # liste des projets (/work)
     │   ├── work/[slug]/page.tsx     # gabarit d'une page rapport
-    │   ├── work/projects/*.mdx      # CONTENU des rapports (1 fichier = 1 rapport)
     │   ├── gallery/page.tsx         # galerie
     │   ├── not-found.tsx / robots.ts / sitemap.ts
-    ├── components/                  # Header, Footer, RouteGuard, ProjectCard, mdx, etc.
+    ├── content/projects/*.mdx       # CONTENU des rapports (1 fichier = 1 rapport)
+    ├── components/
+    │   ├── layout/                  # Header, Footer, ThemeToggle, Providers, RouteGuard
+    │   ├── mdx/                     # rendu MDX, HeadingLink, ScrollToHash
+    │   ├── work/                    # Projects, ProjectCard
+    │   ├── about/  gallery/
+    ├── styles/                      # custom.css, breakpoints.scss
     ├── resources/
     │   ├── content.tsx              # ⭐ nom, à-propos, expériences, études, certifications, compétences, galerie
     │   └── once-ui.config.ts        # thème, couleurs, polices, routes, baseURL
@@ -59,11 +64,10 @@ Réglage requis une fois : **Settings → Pages → Source = GitHub Actions**.
 | Pour changer... | Fichier / dossier |
 |---|---|
 | Nom, à-propos, expériences, études, certifications, compétences | `src/resources/content.tsx` |
-| Les rapports (projets) | `src/app/work/projects/*.mdx` |
-| Couvertures des rapports | `public/images/rapports/` |
+| Les rapports (projets) | `src/content/projects/*.mdx` |
+| Couvertures + vidéos des rapports | `public/projects/<slug>/` |
 | Images des certifications | `public/images/certifications/` |
 | Photo de profil / favicon | `public/images/avatar.jpg` et `src/app/icon.jpg` |
-| Vidéos de démo | `public/videos/` |
 | Couleurs / thème / polices | `src/resources/once-ui.config.ts` |
 
 > **Accueil** : ne montre que le **projet phare** (le rapport avec la date `publishedAt` la plus récente).
@@ -75,9 +79,9 @@ Réglage requis une fois : **Settings → Pages → Source = GitHub Actions**.
 
 Un rapport = **un fichier `.mdx`**. Pas besoin de toucher au code.
 
-**1.** Dépose la capture dans `public/images/rapports/` (nom complet, ex. `Mon nouveau rapport.png`).
+**1.** Choisis un slug en kebab-case, ex. `mon-nouveau-rapport` (= l'URL `/work/mon-nouveau-rapport`).
 
-**2.** Crée `src/app/work/projects/mon-nouveau-rapport.mdx` (le nom du fichier = l'URL `/work/mon-nouveau-rapport`).
+**2.** Dépose la capture dans `public/projects/mon-nouveau-rapport/cover.png` et crée `src/content/projects/mon-nouveau-rapport.mdx`.
 
 **3.** Colle ce modèle :
 
@@ -87,7 +91,7 @@ title: "Titre complet du rapport"
 publishedAt: "2025-07-01"
 summary: "Résumé court affiché sur la carte."
 images:
-  - "/Portfolio/images/rapports/Mon nouveau rapport.png"
+  - "/Portfolio/projects/mon-nouveau-rapport/cover.png"
 tag: "Power BI"
 link: "LIEN_PUBLISH_TO_WEB"
 ---
@@ -103,13 +107,14 @@ Description en un ou deux paragraphes.
 
 Pour une **vidéo** au lieu d'un rapport public (write-back), remplace l'iframe par :
 ```mdx
-<video controls playsInline style={{width:'100%',borderRadius:12}} src="/Portfolio/videos/Ma video.mp4"></video>
+<video controls playsInline style={{width:'100%',borderRadius:12}} src="/Portfolio/projects/mon-nouveau-rapport/demo.mp4"></video>
 ```
 
 ### Règles importantes
 - **Chemins** : toujours préfixer `/Portfolio/...` (sinon 404 sur GitHub Pages).
 - **`publishedAt`** : `AAAA-MM-JJ`. Le plus récent passe en premier (et en vedette sur l'accueil).
 - **JSX dans MDX** : `style={{...}}` (accolades), `allowFullScreen` / `strokeWidth` en camelCase.
+- **Noms de fichiers** : kebab-case, sans espaces ni accents (URL propres).
 - Enregistrer en **UTF-8** (accents).
 
 ---
@@ -124,11 +129,11 @@ Dans `src/resources/content.tsx`, section `about.certifications.items`, ajoute u
   issuer: "IBM · Coursera",
   date: "Mois AAAA",
   link: "https://coursera.org/verify/XXXX",
-  image: "/Portfolio/images/certifications/Nom complet de la certification.jpg",
+  image: "/Portfolio/images/certifications/nom-de-la-certification.jpg",
 },
 ```
 
-Et dépose l'image dans `public/images/certifications/` avec le **nom complet** de la certification.
+Et dépose l'image dans `public/images/certifications/` en kebab-case (ex. `excel-basics-data-analysis.jpg`).
 
 ---
 
