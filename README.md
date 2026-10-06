@@ -34,8 +34,8 @@ Réglage requis une fois : **Settings → Pages → Source = GitHub Actions**.
 ├── public/
 │   ├── images/
 │   │   ├── avatar.jpg               # photo de profil
-│   │   ├── arriere-plan.png
-│   │   └── certifications/          # images des certifications (kebab-case)
+│   │   └── arriere-plan.png
+│   ├── certifications/<slug>/       # image d'une certification : cover.jpg
 │   └── projects/<slug>/             # assets d'un rapport : cover.png (+ demo.mp4)
 └── src/
     ├── app/
@@ -66,7 +66,7 @@ Réglage requis une fois : **Settings → Pages → Source = GitHub Actions**.
 | Nom, à-propos, expériences, études, certifications, compétences | `src/resources/content.tsx` |
 | Les rapports (projets) | `src/content/projects/*.mdx` |
 | Couvertures + vidéos des rapports | `public/projects/<slug>/` |
-| Images des certifications | `public/images/certifications/` |
+| Images des certifications | `public/certifications/<slug>/` |
 | Photo de profil / favicon | `public/images/avatar.jpg` et `src/app/icon.jpg` |
 | Couleurs / thème / polices | `src/resources/once-ui.config.ts` |
 
@@ -129,11 +129,11 @@ Dans `src/resources/content.tsx`, section `about.certifications.items`, ajoute u
   issuer: "IBM · Coursera",
   date: "Mois AAAA",
   link: "https://coursera.org/verify/XXXX",
-  image: "/Portfolio/images/certifications/nom-de-la-certification.jpg",
+  image: "/Portfolio/certifications/nom-de-la-certification/cover.jpg",
 },
 ```
 
-Et dépose l'image dans `public/images/certifications/` en kebab-case (ex. `excel-basics-data-analysis.jpg`).
+Et dépose l'image dans `public/certifications/nom-de-la-certification/cover.jpg` (dossier en kebab-case, ex. `excel-basics-data-analysis`).
 
 ---
 
