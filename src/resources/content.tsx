@@ -219,6 +219,7 @@ const gallery: Gallery = {
   title: `Galerie – ${person.name}`,
   description: `Aperçus de rapports par ${person.name}`,
   images: [
+    { src: "/Portfolio/projects/atletico-madrid-ventes-en-ligne/cover.png", alt: "Atlético de Madrid : ventes en ligne", orientation: "horizontal" },
     { src: "/Portfolio/projects/suivi-meteo/cover.png", alt: "Dashboard Suivi météo", orientation: "horizontal" },
     { src: "/Portfolio/projects/analyse-ventes/cover.png", alt: "Dashboard Ventes & Performance", orientation: "horizontal" },
     { src: "/Portfolio/projects/catalogue-vehicules/cover.png", alt: "Catalogue des véhicules", orientation: "horizontal" },
