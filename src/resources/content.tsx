@@ -45,14 +45,14 @@ const home: Home = {
     display: true,
     title: (
       <Row gap="12" vertical="center">
-        <strong className="ml-4">Suivi météo</strong>{" "}
+        <strong className="ml-4">Atlético de Madrid</strong>{" "}
         <Line background="brand-alpha-strong" vert height="20" />
         <Text marginRight="4" onBackground="brand-medium">
           Rapport en vedette
         </Text>
       </Row>
     ),
-    href: "/work/suivi-meteo",
+    href: "/work/atletico-madrid-ventes-en-ligne",
   },
   subline: (
     <>
