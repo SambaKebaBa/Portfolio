@@ -65,6 +65,7 @@ Réglage requis une fois : **Settings → Pages → Source = GitHub Actions**.
 |---|---|
 | Nom, à-propos, expériences, études, certifications, compétences | `src/resources/content.tsx` |
 | Les rapports (projets) | `src/content/projects/*.mdx` |
+| La galerie (liste des captures affichées) | `src/resources/content.tsx`, liste `gallery.images` |
 | Couvertures + vidéos des rapports | `public/projects/<slug>/` |
 | Images des certifications | `public/certifications/<slug>/` |
 | Photo de profil / favicon | `public/images/avatar.jpg` et `src/app/icon.jpg` |
@@ -77,26 +78,41 @@ Réglage requis une fois : **Settings → Pages → Source = GitHub Actions**.
 
 ## Ajouter un nouveau rapport
 
-Un rapport = **un fichier `.mdx`**. Pas besoin de toucher au code.
+Un rapport touche **trois endroits**. Les deux premiers sont obligatoires ; le troisième sert seulement pour la
+galerie, qui ne lit pas les fichiers MDX.
 
-**1.** Choisis un slug en kebab-case, ex. `mon-nouveau-rapport` (= l'URL `/work/mon-nouveau-rapport`).
+| Où | Quoi | Fait apparaître le rapport dans |
+|---|---|---|
+| `public/projects/<slug>/cover.png` | la capture du rapport | les cartes et la page du rapport |
+| `src/content/projects/<slug>.mdx` | la page du rapport | **Projets** (`/work`) et l'**accueil** s'il est le plus récent |
+| `src/resources/content.tsx`, liste `gallery.images` | une ligne | la **Galerie** (`/gallery`) |
 
-**2.** Dépose la capture dans `public/projects/mon-nouveau-rapport/cover.png` et crée `src/content/projects/mon-nouveau-rapport.mdx`.
+### Étape 1 : choisir le slug
+Le slug est le nom technique du rapport : kebab-case, minuscules, sans accents ni espaces, par exemple
+`suivi-des-ventes`. Il donne l'adresse de la page (`/work/suivi-des-ventes`) et le nom du dossier de la capture.
+Le même slug sert aux trois endroits.
 
-**3.** Colle ce modèle :
+### Étape 2 : déposer la capture
+Crée le dossier `public/projects/<slug>/` et mets-y la capture sous le nom **`cover.png`** (format 16:9).
+Une vidéo de démonstration éventuelle va dans le même dossier (`demo.mp4`).
+
+### Étape 3 : créer la page du rapport
+Crée `src/content/projects/<slug>.mdx`, en UTF-8, et colle ce modèle. Remplace `<slug>` partout et
+`LIEN_PUBLISH_TO_WEB` aux **trois** endroits par le lien « Publier sur le web » du rapport
+(`https://app.powerbi.com/view?r=…`).
 
 ```mdx
 ---
 title: "Titre complet du rapport"
-publishedAt: "2025-07-01"
-summary: "Résumé court affiché sur la carte."
+publishedAt: "2026-10-15"
+summary: "Résumé court, une phrase, affiché sur la carte."
 images:
-  - "/Portfolio/projects/mon-nouveau-rapport/cover.png"
+  - "/Portfolio/projects/<slug>/cover.png"
 tag: "Power BI"
 link: "LIEN_PUBLISH_TO_WEB"
 ---
 
-Description en un ou deux paragraphes.
+Description longue : le besoin, l'approche, puis une ligne par page.
 
 **Technologies :** Power BI · Power Query (M) · DAX
 
@@ -105,35 +121,79 @@ Description en un ou deux paragraphes.
 <iframe src="LIEN_PUBLISH_TO_WEB" style={{width:'100%',aspectRatio:'16 / 9',border:0,borderRadius:12}} allowFullScreen />
 ```
 
-Pour une **vidéo** au lieu d'un rapport public (write-back), remplace l'iframe par :
+Pour une **vidéo** au lieu d'un rapport public (rapport avec écriture de données, par exemple), remplace l'iframe
+par :
 ```mdx
-<video controls playsInline style={{width:'100%',borderRadius:12}} src="/Portfolio/projects/mon-nouveau-rapport/demo.mp4"></video>
+<video controls playsInline style={{width:'100%',borderRadius:12}} src="/Portfolio/projects/<slug>/demo.mp4"></video>
 ```
 
-### Règles importantes
-- **Chemins** : toujours préfixer `/Portfolio/...` (sinon 404 sur GitHub Pages).
-- **`publishedAt`** : `AAAA-MM-JJ`. Le plus récent passe en premier (et en vedette sur l'accueil).
-- **JSX dans MDX** : `style={{...}}` (accolades), `allowFullScreen` / `strokeWidth` en camelCase.
-- **Noms de fichiers** : kebab-case, sans espaces ni accents (URL propres).
-- Enregistrer en **UTF-8** (accents).
+### Étape 4 : ajouter le rapport à la galerie
+Dans `src/resources/content.tsx`, section `gallery`, ajoute une ligne dans `images` (l'ordre de la liste est
+l'ordre d'affichage) :
+
+```ts
+{ src: "/Portfolio/projects/<slug>/cover.png", alt: "Titre du rapport", orientation: "horizontal" },
+```
+
+Sans cette ligne, le rapport existe sur le site mais n'apparaît pas dans la galerie.
+
+### Étape 5 : vérifier puis publier
+1. Facultatif, en local : `npm run build`. Le build échoue si un MDX est mal formé.
+2. Commit et push sur `main`.
+3. Attends 1 à 2 minutes (onglet **Actions** du dépôt : le déploiement doit être vert).
+4. Vérifie en ligne : la carte dans Projets, la page `https://sambakebaba.github.io/Portfolio/work/<slug>`
+   (rapport affiché dans l'iframe), la galerie, et l'accueil si c'est le plus récent.
+
+### Règles à respecter
+- **Chemins** : toujours préfixer par `/Portfolio/...`, sinon l'image donne une erreur 404 sur GitHub Pages.
+- **`publishedAt`** : format `AAAA-MM-JJ`. Le rapport le plus récent passe en premier dans Projets et devient le
+  projet phare de l'accueil.
+- **JSX dans le MDX** : `style={{...}}` avec doubles accolades ; `allowFullScreen`, `strokeWidth` en camelCase.
+- **Noms de fichiers et dossiers** : kebab-case, sans espaces ni accents.
+- **Encodage** : UTF-8, pour les accents.
+
+### Retirer un rapport
+Supprime les trois éléments, sinon il reste une carte sans image ou une image orpheline dans la galerie :
+1. `src/content/projects/<slug>.mdx` ;
+2. le dossier `public/projects/<slug>/` ;
+3. sa ligne dans `gallery.images` de `src/resources/content.tsx`.
+
+Puis commit et push.
 
 ---
 
 ## Ajouter une certification
 
-Dans `src/resources/content.tsx`, section `about.certifications.items`, ajoute un bloc :
+Une certification touche **deux endroits** et apparaît dans la page **À propos**, section Certifications.
+
+### Étape 1 : choisir le slug
+Nom du dossier de l'image, en kebab-case sans accents, par exemple `excel-basics-data-analysis`.
+
+### Étape 2 : déposer l'image
+Mets l'image du certificat dans `public/certifications/<slug>/cover.jpg`.
+
+### Étape 3 : ajouter le bloc
+Dans `src/resources/content.tsx`, section `about.certifications.items`, ajoute ce bloc. L'ordre de la liste est
+l'ordre d'affichage : mets la plus récente en premier.
 
 ```ts
 {
   name: "Nom complet de la certification",
   issuer: "IBM · Coursera",
-  date: "Mois AAAA",
+  date: "Février 2024",
   link: "https://coursera.org/verify/XXXX",
-  image: "/Portfolio/certifications/nom-de-la-certification/cover.jpg",
+  image: "/Portfolio/certifications/<slug>/cover.jpg",
 },
 ```
 
-Et dépose l'image dans `public/certifications/nom-de-la-certification/cover.jpg` (dossier en kebab-case, ex. `excel-basics-data-analysis`).
+- `issuer` : l'organisme et la plateforme, séparés par ` · `.
+- `date` : le mois en français et l'année.
+- `link` : le lien de vérification du certificat.
+
+### Étape 4 : publier
+Commit et push sur `main`, attends 1 à 2 minutes, puis vérifie la page À propos en ligne.
+
+Pour **retirer** une certification : supprime son bloc et le dossier `public/certifications/<slug>/`.
 
 ---
 
