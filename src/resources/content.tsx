@@ -45,14 +45,14 @@ const home: Home = {
     display: true,
     title: (
       <Row gap="12" vertical="center">
-        <strong className="ml-4">Atlético de Madrid</strong>{" "}
+        <strong className="ml-4">Boutique de football en ligne</strong>{" "}
         <Line background="brand-alpha-strong" vert height="20" />
         <Text marginRight="4" onBackground="brand-medium">
           Rapport en vedette
         </Text>
       </Row>
     ),
-    href: "/work/atletico-madrid-ventes-en-ligne",
+    href: "/work/boutique-football-ventes-clients",
   },
   subline: (
     <>
@@ -219,7 +219,7 @@ const gallery: Gallery = {
   title: `Galerie – ${person.name}`,
   description: `Aperçus de rapports par ${person.name}`,
   images: [
-    { src: "/Portfolio/projects/atletico-madrid-ventes-en-ligne/cover.png", alt: "Atlético de Madrid : ventes en ligne", orientation: "horizontal" },
+    { src: "/Portfolio/projects/boutique-football-ventes-clients/cover.png", alt: "Boutique de football en ligne : ventes et clients", orientation: "horizontal" },
     { src: "/Portfolio/projects/suivi-meteo/cover.png", alt: "Dashboard Suivi météo", orientation: "horizontal" },
     { src: "/Portfolio/projects/analyse-ventes/cover.png", alt: "Dashboard Ventes & Performance", orientation: "horizontal" },
     { src: "/Portfolio/projects/catalogue-vehicules/cover.png", alt: "Catalogue des véhicules", orientation: "horizontal" },
