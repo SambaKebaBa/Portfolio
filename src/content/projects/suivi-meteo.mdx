@@ -1,14 +1,24 @@
 ---
 title: "Suivi météo - Prévisions & qualité de l'air"
 publishedAt: "2025-06-15"
-summary: "Dashboard météo temps réel multi-villes : prévisions 7 jours et qualité de l'air, connecté à l'API WeatherAPI via Power Query."
+summary: "Rapport d'une page pour suivre la météo de plusieurs villes : conditions du moment, prévisions sur 7 jours, pluie, soleil et qualité de l'air."
 images:
   - "/Portfolio/projects/suivi-meteo/cover.png"
 tag: "Power BI"
 link: "https://app.powerbi.com/view?r=eyJrIjoiNzQ2N2U1MWMtYjc5MC00YzllLTk4NDktN2Y1ZjQxYzkxMDk5IiwidCI6ImEyMjJmZmI3LThiODYtNDk4ZC05NWFmLWUwMTRkNzMyMzhjOCJ9"
 ---
 
-Dashboard météo en temps réel pour plusieurs villes : prévisions à 7 jours et qualité de l'air. Anneau de qualité de l'air, cartes KPI permutables et courbe de température sur 7 jours.
+Ce rapport réunit sur un écran tout ce qu'on regarde avant de sortir : le temps qu'il fait, celui qu'il fera, et l'air qu'on respire. Les données viennent d'un service météo et se mettent à jour à chaque actualisation.
+
+On choisit une ville (Gatineau, Montréal, Ottawa…) et toute la page suit. On choisit un polluant et la jauge de qualité de l'air change, avec sa couleur et un conseil adapté.
+
+### Ce qu'on y voit
+- **Maintenant** : température, ciel, humidité, pression, indice UV, visibilité, précipitations et vent.
+- **Prévisions** : la température des 7 prochains jours, jour par jour.
+- **Soleil et pluie** : heures de lever et de coucher du soleil, chance de pluie par jour.
+- **Qualité de l'air** : CO, NO2, O3, PM2.5, PM10 et SO2, chacun avec son niveau et un conseil (« L'air est pur et sain », « Restez à l'intérieur »…).
+
+D'un clic, on passe d'une ville à l'autre et d'un polluant à l'autre.
 
 **Technologies :** Power BI · Power Query (M) · API WeatherAPI · DAX
 

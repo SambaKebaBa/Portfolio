@@ -226,7 +226,6 @@ const gallery: Gallery = {
     { src: "/Portfolio/projects/suivi-projets/cover.png", alt: "Suivi des projets", orientation: "horizontal" },
     { src: "/Portfolio/projects/uber-flotte/cover.png", alt: "Dashboard Uber", orientation: "horizontal" },
     { src: "/Portfolio/projects/salaires-budget-rh/cover.png", alt: "Salaires & Budget RH", orientation: "horizontal" },
-    { src: "/Portfolio/projects/commentaires-temps-reel/cover.png", alt: "Commentaires en temps réel", orientation: "horizontal" },
   ],
 };
 
