@@ -71,7 +71,9 @@ Réglage requis une fois : **Settings → Pages → Source = GitHub Actions**.
 | Photo de profil / favicon | `public/images/avatar.jpg` et `src/app/icon.jpg` |
 | Couleurs / thème / polices | `src/resources/once-ui.config.ts` |
 
-> **Accueil** : ne montre que le **projet phare** (le rapport avec la date `publishedAt` la plus récente).
+> **Accueil** : deux éléments distincts. Le **bandeau** en haut (« Atlético de Madrid | Rapport en vedette ») se
+> choisit à la main dans `src/resources/content.tsx` (`home.featured`, voir « Choisir le rapport mis en avant sur
+> l'accueil »). La **grande carte** en dessous montre toujours le rapport le plus récent (`publishedAt`).
 > Tous les rapports sont sur la page **Projets** (`/work`).
 
 ---
@@ -144,10 +146,38 @@ Sans cette ligne, le rapport existe sur le site mais n'apparaît pas dans la gal
 4. Vérifie en ligne : la carte dans Projets, la page `https://sambakebaba.github.io/Portfolio/work/<slug>`
    (rapport affiché dans l'iframe), la galerie, et l'accueil si c'est le plus récent.
 
+### Choisir le rapport mis en avant sur l'accueil
+Le haut de l'accueil a un **bandeau** « <Nom> | Rapport en vedette » qui mène à un rapport. Il ne suit pas les
+dates : il change seulement si tu le modifies.
+
+**Lequel choisir** : le rapport qui te représente le mieux aujourd'hui pour le poste visé. En pratique :
+1. le plus abouti (livrable complet, en français, signé, données intégrées) plutôt que le plus récent par défaut ;
+2. celui dont le sujet parle au lecteur visé (ventes et e-commerce pour un poste commercial, RH pour un poste RH) ;
+3. un rapport public qui s'ouvre vite et sans erreur (le lien « Publier sur le web » doit fonctionner) ;
+4. à qualité égale, le plus récent, pour que le bandeau et la grande carte disent la même chose.
+
+**Comment le changer** : dans `src/resources/content.tsx`, section `home`, bloc `featured` :
+
+```tsx
+featured: {
+  display: true,
+  title: (
+    <Row gap="12" vertical="center">
+      <strong className="ml-4">Atlético de Madrid</strong>{" "}   {/* nom court : le titre avant « : » */}
+      …
+  ),
+  href: "/work/atletico-madrid-ventes-en-ligne",                   // le slug du rapport
+},
+```
+
+Change seulement le texte du `<strong>` et le `href` (`/work/<slug>`, sans `/Portfolio`). `display: false` masque
+le bandeau. Le skill `publier-projet` le fait avec `make_mdx.py --featured` quand tu réponds oui à « en vedette
+sur l'accueil ? ».
+
 ### Règles à respecter
 - **Chemins** : toujours préfixer par `/Portfolio/...`, sinon l'image donne une erreur 404 sur GitHub Pages.
-- **`publishedAt`** : format `AAAA-MM-JJ`. Le rapport le plus récent passe en premier dans Projets et devient le
-  projet phare de l'accueil.
+- **`publishedAt`** : format `AAAA-MM-JJ`. Le rapport le plus récent passe en premier dans Projets et sur la grande
+  carte de l'accueil (le bandeau, lui, se choisit à la main).
 - **JSX dans le MDX** : `style={{...}}` avec doubles accolades ; `allowFullScreen`, `strokeWidth` en camelCase.
 - **Noms de fichiers et dossiers** : kebab-case, sans espaces ni accents.
 - **Encodage** : UTF-8, pour les accents.
@@ -158,7 +188,7 @@ Supprime les trois éléments, sinon il reste une carte sans image ou une image 
 2. le dossier `public/projects/<slug>/` ;
 3. sa ligne dans `gallery.images` de `src/resources/content.tsx`.
 
-Puis commit et push.
+S'il était dans le bandeau de l'accueil (`home.featured`), mets-y un autre rapport. Puis commit et push.
 
 ---
 
