@@ -1,233 +1,72 @@
-# Portfolio — Samba Kéba Ba
+# Portfolio 💼
 
-Portfolio personnel de **Samba Kéba Ba**, développeur BI (Power BI, Databricks, Microsoft Fabric).
-Application Next.js exportée en statique, hébergée sur GitHub Pages.
+[![Next.js](https://img.shields.io/badge/Next.js-16-black.svg)](https://nextjs.org/)
+[![Once UI](https://img.shields.io/badge/Once%20UI-design%20system-6E56CF.svg)](https://once-ui.com/)
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-en%20ligne-222.svg)](https://sambakebaba.github.io/Portfolio/)
+
+Mon portfolio de développeur BI (Power BI, Databricks, Microsoft Fabric) : mes rapports Power BI en ligne, ma galerie, mon parcours et mes certifications.
 
 **En ligne :** https://sambakebaba.github.io/Portfolio/
 
----
+## 📋 Fonctionnalités
 
-## Développement local
+- **Accueil** : le rapport en vedette et le dernier rapport publié
+- **Projets** : chaque rapport avec sa description et le rapport Power BI intégré
+- **Galerie** : les captures de mes rapports
+- **À propos** : expériences, études, certifications et compétences
+
+## 🔧 Installation
 
 ```bash
 npm install
 npm run dev      # http://localhost:3000
-npm run build    # export statique -> ./out
+npm run build    # export statique dans ./out
 ```
 
-Déploiement **automatique** sur GitHub Pages via `.github/workflows/deploy.yml` à chaque push sur `main` (~1-2 min).
-Réglage requis une fois : **Settings → Pages → Source = GitHub Actions**.
+En local, les images peuvent sembler cassées : leur chemin commence par `/Portfolio`, le nom du dépôt. Elles s'affichent normalement sur GitHub Pages.
 
-> En local, les images peuvent sembler cassées : leur chemin est préfixé `/Portfolio` (nom du repo).
-> C'est normal, elles s'affichent bien sur l'URL GitHub Pages. Si tu **renommes le repo**, remplace
-> `/Portfolio/` par le nouveau nom dans `content.tsx` et les `.mdx`.
+## 📚 Utilisation
 
----
+### Ajouter un rapport
+1. Mettre la capture dans `public/projects/<slug>/cover.png` (16:9).
+2. Créer la page `src/content/projects/<slug>.mdx` (titre, date, résumé, lien « Publier sur le web », description).
+3. Ajouter la capture à la galerie : liste `gallery.images` de `src/resources/content.tsx`.
 
-## Structure
+Le rapport le plus récent (`publishedAt`) apparaît en premier. Le rapport en vedette de l'accueil se choisit dans `home.featured` de `src/resources/content.tsx`.
+
+### Ajouter une certification
+1. Mettre l'image dans `public/certifications/<slug>/cover.jpg`.
+2. Ajouter son bloc (nom, organisme, date, lien de vérification) dans `about.certifications.items` de `src/resources/content.tsx`.
+
+Les chemins d'images commencent toujours par `/Portfolio/`.
+
+### Déploiement
+Chaque push sur `main` reconstruit le site et le publie sur GitHub Pages en 1 à 2 minutes (`.github/workflows/deploy.yml`).
+
+## 📁 Structure du projet
 
 ```
-.
-├── .github/workflows/deploy.yml     # Action : build + déploiement GitHub Pages
-├── next.config.mjs                  # export statique, basePath, MDX, images
-├── package.json / package-lock      # dépendances + scripts
+Portfolio/
+├── .github/workflows/deploy.yml   # Construction et déploiement sur GitHub Pages
 ├── public/
-│   ├── images/
-│   │   ├── avatar.jpg               # photo de profil
-│   │   └── arriere-plan.png
-│   ├── certifications/<slug>/       # image d'une certification : cover.jpg
-│   └── projects/<slug>/             # assets d'un rapport : cover.png (+ demo.mp4)
-└── src/
-    ├── app/
-    │   ├── layout.tsx               # gabarit global (header, footer, thème)
-    │   ├── icon.jpg                 # favicon (onglet + aperçu de lien)
-    │   ├── page.tsx                 # ACCUEIL (affiche uniquement le projet phare)
-    │   ├── about/page.tsx           # À propos (intro, expériences, études, certifications, compétences)
-    │   ├── work/page.tsx            # liste des projets (/work)
-    │   ├── work/[slug]/page.tsx     # gabarit d'une page rapport
-    │   ├── gallery/page.tsx         # galerie
-    │   ├── not-found.tsx / robots.ts / sitemap.ts
-    ├── content/projects/*.mdx       # CONTENU des rapports (1 fichier = 1 rapport)
-    ├── components/
-    │   ├── layout/                  # Header, Footer, ThemeToggle, Providers, RouteGuard
-    │   ├── mdx/                     # rendu MDX, HeadingLink, ScrollToHash
-    │   ├── work/                    # Projects, ProjectCard
-    │   ├── about/  gallery/
-    ├── styles/                      # custom.css, breakpoints.scss
-    ├── resources/
-    │   ├── content.tsx              # ⭐ nom, à-propos, expériences, études, certifications, compétences, galerie
-    │   └── once-ui.config.ts        # thème, couleurs, polices, routes, baseURL
-    ├── types/  utils/
+│   ├── images/                    # Photo de profil, arrière-plan
+│   ├── projects/<slug>/           # Capture de chaque rapport
+│   └── certifications/<slug>/     # Image de chaque certification
+├── src/
+│   ├── app/                       # Pages : accueil, projets, galerie, à propos
+│   ├── components/                # Composants de l'interface
+│   ├── content/projects/          # Un fichier MDX par rapport
+│   └── resources/
+│       ├── content.tsx            # Textes du site, parcours, certifications, galerie
+│       └── once-ui.config.ts      # Thème, couleurs, polices
+├── next.config.mjs
+└── package.json
 ```
 
-### Ce que tu édites au quotidien
-| Pour changer... | Fichier / dossier |
-|---|---|
-| Nom, à-propos, expériences, études, certifications, compétences | `src/resources/content.tsx` |
-| Les rapports (projets) | `src/content/projects/*.mdx` |
-| La galerie (liste des captures affichées) | `src/resources/content.tsx`, liste `gallery.images` |
-| Couvertures + vidéos des rapports | `public/projects/<slug>/` |
-| Images des certifications | `public/certifications/<slug>/` |
-| Photo de profil / favicon | `public/images/avatar.jpg` et `src/app/icon.jpg` |
-| Couleurs / thème / polices | `src/resources/once-ui.config.ts` |
+## 👤 Auteur
 
-> **Accueil** : deux éléments distincts. Le **bandeau** en haut (« Atlético de Madrid | Rapport en vedette ») se
-> choisit à la main dans `src/resources/content.tsx` (`home.featured`, voir « Choisir le rapport mis en avant sur
-> l'accueil »). La **grande carte** en dessous montre toujours le rapport le plus récent (`publishedAt`).
-> Tous les rapports sont sur la page **Projets** (`/work`).
+**SAMBA KEBA BA** · [LinkedIn](https://www.linkedin.com/in/sambak%C3%A9baba/) · [Mes rapports Power BI](https://github.com/SambaKebaBa/Power-BI-Personnel)
 
 ---
 
-## Ajouter un nouveau rapport
-
-Un rapport touche **trois endroits**. Les deux premiers sont obligatoires ; le troisième sert seulement pour la
-galerie, qui ne lit pas les fichiers MDX.
-
-| Où | Quoi | Fait apparaître le rapport dans |
-|---|---|---|
-| `public/projects/<slug>/cover.png` | la capture du rapport | les cartes et la page du rapport |
-| `src/content/projects/<slug>.mdx` | la page du rapport | **Projets** (`/work`) et l'**accueil** s'il est le plus récent |
-| `src/resources/content.tsx`, liste `gallery.images` | une ligne | la **Galerie** (`/gallery`) |
-
-### Étape 1 : choisir le slug
-Le slug est le nom technique du rapport : kebab-case, minuscules, sans accents ni espaces, par exemple
-`suivi-des-ventes`. Il donne l'adresse de la page (`/work/suivi-des-ventes`) et le nom du dossier de la capture.
-Le même slug sert aux trois endroits.
-
-### Étape 2 : déposer la capture
-Crée le dossier `public/projects/<slug>/` et mets-y la capture sous le nom **`cover.png`** (format 16:9).
-Une vidéo de démonstration éventuelle va dans le même dossier (`demo.mp4`).
-
-### Étape 3 : créer la page du rapport
-Crée `src/content/projects/<slug>.mdx`, en UTF-8, et colle ce modèle. Remplace `<slug>` partout et
-`LIEN_PUBLISH_TO_WEB` aux **trois** endroits par le lien « Publier sur le web » du rapport
-(`https://app.powerbi.com/view?r=…`).
-
-```mdx
----
-title: "Titre complet du rapport"
-publishedAt: "2026-10-15"
-summary: "Résumé court, une phrase, affiché sur la carte."
-images:
-  - "/Portfolio/projects/<slug>/cover.png"
-tag: "Power BI"
-link: "LIEN_PUBLISH_TO_WEB"
----
-
-Description longue : le besoin, l'approche, puis une ligne par page.
-
-**Technologies :** Power BI · Power Query (M) · DAX
-
-<div style={{textAlign:'right',marginBottom:'0.5rem'}}><a href="LIEN_PUBLISH_TO_WEB">Ouvrir en plein écran <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{verticalAlign:'-2px',marginLeft:'4px'}}><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg></a></div>
-
-<iframe src="LIEN_PUBLISH_TO_WEB" style={{width:'100%',aspectRatio:'16 / 9',border:0,borderRadius:12}} allowFullScreen />
-```
-
-Pour une **vidéo** au lieu d'un rapport public (rapport avec écriture de données, par exemple), remplace l'iframe
-par :
-```mdx
-<video controls playsInline style={{width:'100%',borderRadius:12}} src="/Portfolio/projects/<slug>/demo.mp4"></video>
-```
-
-### Étape 4 : ajouter le rapport à la galerie
-Dans `src/resources/content.tsx`, section `gallery`, ajoute une ligne dans `images` (l'ordre de la liste est
-l'ordre d'affichage) :
-
-```ts
-{ src: "/Portfolio/projects/<slug>/cover.png", alt: "Titre du rapport", orientation: "horizontal" },
-```
-
-Sans cette ligne, le rapport existe sur le site mais n'apparaît pas dans la galerie.
-
-### Étape 5 : vérifier puis publier
-1. Facultatif, en local : `npm run build`. Le build échoue si un MDX est mal formé.
-2. Commit et push sur `main`.
-3. Attends 1 à 2 minutes (onglet **Actions** du dépôt : le déploiement doit être vert).
-4. Vérifie en ligne : la carte dans Projets, la page `https://sambakebaba.github.io/Portfolio/work/<slug>`
-   (rapport affiché dans l'iframe), la galerie, et l'accueil si c'est le plus récent.
-
-### Choisir le rapport mis en avant sur l'accueil
-Le haut de l'accueil a un **bandeau** « <Nom> | Rapport en vedette » qui mène à un rapport. Il ne suit pas les
-dates : il change seulement si tu le modifies.
-
-**Lequel choisir** : le rapport qui te représente le mieux aujourd'hui pour le poste visé. En pratique :
-1. le plus abouti (livrable complet, en français, signé, données intégrées) plutôt que le plus récent par défaut ;
-2. celui dont le sujet parle au lecteur visé (ventes et e-commerce pour un poste commercial, RH pour un poste RH) ;
-3. un rapport public qui s'ouvre vite et sans erreur (le lien « Publier sur le web » doit fonctionner) ;
-4. à qualité égale, le plus récent, pour que le bandeau et la grande carte disent la même chose.
-
-**Comment le changer** : dans `src/resources/content.tsx`, section `home`, bloc `featured` :
-
-```tsx
-featured: {
-  display: true,
-  title: (
-    <Row gap="12" vertical="center">
-      <strong className="ml-4">Atlético de Madrid</strong>{" "}   {/* nom court : le titre avant « : » */}
-      …
-  ),
-  href: "/work/atletico-madrid-ventes-en-ligne",                   // le slug du rapport
-},
-```
-
-Change seulement le texte du `<strong>` et le `href` (`/work/<slug>`, sans `/Portfolio`). `display: false` masque
-le bandeau. Le skill `publier-projet` le fait avec `make_mdx.py --featured` quand tu réponds oui à « en vedette
-sur l'accueil ? ».
-
-### Règles à respecter
-- **Chemins** : toujours préfixer par `/Portfolio/...`, sinon l'image donne une erreur 404 sur GitHub Pages.
-- **`publishedAt`** : format `AAAA-MM-JJ`. Le rapport le plus récent passe en premier dans Projets et sur la grande
-  carte de l'accueil (le bandeau, lui, se choisit à la main).
-- **JSX dans le MDX** : `style={{...}}` avec doubles accolades ; `allowFullScreen`, `strokeWidth` en camelCase.
-- **Noms de fichiers et dossiers** : kebab-case, sans espaces ni accents.
-- **Encodage** : UTF-8, pour les accents.
-
-### Retirer un rapport
-Supprime les trois éléments, sinon il reste une carte sans image ou une image orpheline dans la galerie :
-1. `src/content/projects/<slug>.mdx` ;
-2. le dossier `public/projects/<slug>/` ;
-3. sa ligne dans `gallery.images` de `src/resources/content.tsx`.
-
-S'il était dans le bandeau de l'accueil (`home.featured`), mets-y un autre rapport. Puis commit et push.
-
----
-
-## Ajouter une certification
-
-Une certification touche **deux endroits** et apparaît dans la page **À propos**, section Certifications.
-
-### Étape 1 : choisir le slug
-Nom du dossier de l'image, en kebab-case sans accents, par exemple `excel-basics-data-analysis`.
-
-### Étape 2 : déposer l'image
-Mets l'image du certificat dans `public/certifications/<slug>/cover.jpg`.
-
-### Étape 3 : ajouter le bloc
-Dans `src/resources/content.tsx`, section `about.certifications.items`, ajoute ce bloc. L'ordre de la liste est
-l'ordre d'affichage : mets la plus récente en premier.
-
-```ts
-{
-  name: "Nom complet de la certification",
-  issuer: "IBM · Coursera",
-  date: "Février 2024",
-  link: "https://coursera.org/verify/XXXX",
-  image: "/Portfolio/certifications/<slug>/cover.jpg",
-},
-```
-
-- `issuer` : l'organisme et la plateforme, séparés par ` · `.
-- `date` : le mois en français et l'année.
-- `link` : le lien de vérification du certificat.
-
-### Étape 4 : publier
-Commit et push sur `main`, attends 1 à 2 minutes, puis vérifie la page À propos en ligne.
-
-Pour **retirer** une certification : supprime son bloc et le dossier `public/certifications/<slug>/`.
-
----
-
-## Déploiement
-
-Push sur `main` → `deploy.yml` construit (`npm ci` + `next build`), ajoute `.nojekyll`, publie `out/` sur Pages.
-`basePath` = nom du repo (auto). Une fois : **Settings → Pages → Source = GitHub Actions**.
+⭐ Si ce projet vous plaît, n'hésitez pas à lui donner une étoile !
