@@ -82,9 +82,10 @@ const about: About = {
     title: "Introduction",
     description: (
       <>
-        {person.firstName} est {person.role.toLowerCase()} basé à Québec, analyste en intelligence d'affaires
-        chez Canac. Seul développeur Power BI de son entreprise, il conçoit les tableaux de bord de bout en bout :
-        collecte et validation des données, modélisation, automatisation, gouvernance et visualisation.
+        Je suis {person.role.toLowerCase()}, basé à Québec. Je conçois des rapports Power BI de bout en bout :
+        j'interroge et je valide les données, je construis le modèle, j'automatise ce qui peut l'être et je livre
+        des tableaux de bord que les équipes utilisent au quotidien. J'ai mené deux migrations vers Power BI,
+        depuis SAP Web Intelligence puis depuis SAP Analytics Cloud.
       </>
     ),
   },
@@ -98,12 +99,17 @@ const about: About = {
         role: "Analyste en intelligence d'affaires",
         achievements: [
           <>
-            Seul développeur Power BI de l'entreprise : conçoit l'ensemble des tableaux de bord, du suivi
-            budgétaire aux rapports opérationnels, et gère les espaces de travail et la sécurité dans Power BI Service.
+            Seul développeur BI de l'entreprise, je porte la migration de SAP Analytics Cloud vers Power BI :
+            je recrée les rapports existants et j'en conçois de nouveaux pour tous les secteurs, des magasins
+            à la haute direction.
           </>,
           <>
-            Reconçoit en Power BI les rapports historiques SAP Analytics Cloud et conçoit le thème JSON et les
-            gabarits visuels de l'entreprise. Interroge et valide les données dans Databricks (bronze / argent / or).
+            J'interroge et je valide les données directement dans Databricks (bronze / argent / or), en lien avec
+            l'équipe d'ingénierie de données, avant de bâtir les modèles.
+          </>,
+          <>
+            Je gère les espaces de travail et la sécurité dans Power BI Service, et j'ai créé le thème et les
+            gabarits visuels de l'entreprise.
           </>,
         ],
         images: [],
@@ -114,12 +120,19 @@ const about: About = {
         role: "Technicien en exploitation et valorisation de données",
         achievements: [
           <>
-            Transition des rapports SAP Web Intelligence vers Power BI ; rapports financiers stratégiques déployés
-            dans toutes les unités administratives, cloisonnés par direction avec la sécurité au niveau des lignes (RLS).
+            J'ai conçu les rapports financiers Power BI de toutes les unités administratives : suivi budgétaire,
+            masse salariale et projections financières. Ces rapports étaient publiés dans Power BI Service, chaque
+            direction ne voyant que ses propres données (RLS).
           </>,
           <>
-            Conception seul d'un système de gestion des demandes de rapports de bout en bout : Microsoft Forms →
-            Power Automate → Microsoft Planner → tableau de bord Power BI de suivi alimenté chaque jour.
+            Pendant la migration de SAP Web Intelligence vers Power BI, je développais les nouvelles solutions
+            tout en maintenant les rapports WebI encore en service, avec les modifications demandées par les clients.
+          </>,
+          <>
+            J'ai automatisé des processus du Service des finances avec les outils Microsoft 365 : formulaires
+            Forms, flux Power Automate, alertes et tâches Planner pour recevoir et suivre les demandes. Ce circuit
+            alimentait un tableau de bord de suivi, dont le projet « Suivi des projets » est une version aux
+            données fictives.
           </>,
         ],
         images: [],
@@ -189,7 +202,7 @@ const about: About = {
       {
         title: "Données & plateformes",
         description: (
-          <>Databricks (architecture médaillon bronze / argent / or), Microsoft Fabric, SAP WEBI / SAC, SQL.</>
+          <>Databricks (architecture médaillon), Microsoft Fabric, SQL. Migrations depuis SAP Web Intelligence et SAP Analytics Cloud.</>
         ),
         tags: [],
         images: [],
@@ -197,7 +210,7 @@ const about: About = {
       {
         title: "Automatisation & gouvernance",
         description: (
-          <>Power Automate, Power Apps, Microsoft Forms, Lists. Sécurité RLS / OLS, Python, bonnes pratiques de modélisation.</>
+          <>Power Automate, Power Apps, Microsoft Forms, Planner, Lists, alertes automatisées. Sécurité RLS / OLS, Python, bonnes pratiques de modélisation.</>
         ),
         tags: [],
         images: [],
