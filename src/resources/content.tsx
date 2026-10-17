@@ -82,10 +82,10 @@ const about: About = {
     title: "Introduction",
     description: (
       <>
-        Je suis {person.role.toLowerCase()}, basé à Québec. Je conçois des rapports Power BI de bout en bout :
-        j'interroge et je valide les données, je construis le modèle, j'automatise ce qui peut l'être et je livre
-        des tableaux de bord que les équipes utilisent au quotidien. J'ai mené deux migrations vers Power BI,
-        depuis SAP Web Intelligence puis depuis SAP Analytics Cloud.
+        Je suis développeur BI, basé à Québec. Je conçois des rapports Power BI de bout en bout :
+        j'interroge et je valide les données, je fais la modélisation dans Power BI, j'automatise ce qui peut
+        l'être et je livre des tableaux de bord que les équipes utilisent au quotidien. J'ai été développeur dans
+        deux migrations vers Power BI, depuis SAP Web Intelligence puis depuis SAP Analytics Cloud.
       </>
     ),
   },
@@ -99,13 +99,13 @@ const about: About = {
         role: "Analyste en intelligence d'affaires",
         achievements: [
           <>
-            Seul développeur BI de l'entreprise, je porte la migration de SAP Analytics Cloud vers Power BI :
-            je recrée les rapports existants et j'en conçois de nouveaux pour tous les secteurs, des magasins
-            à la haute direction.
+            Seul développeur BI de l'entreprise, je développe les rapports de la migration de SAP Analytics Cloud
+            vers Power BI : je recrée les rapports existants et j'en conçois de nouveaux pour tous les secteurs,
+            des magasins à la haute direction.
           </>,
           <>
-            J'interroge et je valide les données directement dans Databricks (bronze / argent / or), en lien avec
-            l'équipe d'ingénierie de données, avant de bâtir les modèles.
+            J'interroge les données dans Databricks (bronze / argent / or) et j'y crée aussi des tableaux de bord,
+            en plus de la modélisation et des rapports dans Power BI.
           </>,
           <>
             Je gère les espaces de travail et la sécurité dans Power BI Service, et j'ai créé le thème et les
