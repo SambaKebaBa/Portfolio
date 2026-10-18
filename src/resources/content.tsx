@@ -99,16 +99,16 @@ const about: About = {
         role: "Analyste en intelligence d'affaires",
         achievements: [
           <>
-            Seul développeur BI de l'entreprise, je développe les rapports de la migration de SAP Analytics Cloud
-            vers Power BI : je recrée les rapports existants et j'en conçois de nouveaux pour tous les secteurs,
-            des magasins à la haute direction.
+            Seul développeur BI de l'entreprise : développement des rapports de la migration de SAP Analytics Cloud
+            vers Power BI, recréation des rapports existants et conception de nouveaux rapports pour tous les
+            secteurs, des magasins à la haute direction.
           </>,
           <>
-            J'interroge les données dans Databricks (bronze / argent / or) et j'y crée aussi des tableaux de bord,
-            en plus de la modélisation et des rapports dans Power BI.
+            Interrogation des données dans Databricks (bronze / argent / or) et création de tableaux de bord, en
+            plus de la modélisation et des rapports dans Power BI.
           </>,
           <>
-            Je gère les espaces de travail et la sécurité dans Power BI Service, et j'ai créé le thème et les
+            Gestion des espaces de travail et de la sécurité dans Power BI Service ; création du thème et des
             gabarits visuels de l'entreprise.
           </>,
         ],
@@ -120,16 +120,16 @@ const about: About = {
         role: "Technicien en exploitation et valorisation de données",
         achievements: [
           <>
-            J'ai conçu les rapports financiers Power BI de toutes les unités administratives : suivi budgétaire,
-            masse salariale et projections financières. Ces rapports étaient publiés dans Power BI Service, chaque
-            direction ne voyant que ses propres données (RLS).
+            Conception des rapports financiers Power BI de toutes les unités administratives : suivi budgétaire,
+            masse salariale et projections financières, publiés dans Power BI Service avec un accès de chaque
+            direction limité à ses propres données (RLS).
           </>,
           <>
-            Pendant la migration de SAP Web Intelligence vers Power BI, je développais les nouvelles solutions
-            tout en maintenant les rapports WebI encore en service, avec les modifications demandées par les clients.
+            Développement des nouvelles solutions pendant la migration de SAP Web Intelligence vers Power BI, et
+            maintien des rapports WebI encore en service, avec les modifications demandées par les clients.
           </>,
           <>
-            J'ai automatisé des processus du Service des finances avec les outils Microsoft 365 : formulaires
+            Automatisation de processus du Service des finances avec les outils Microsoft 365 : formulaires
             Forms, flux Power Automate, alertes et tâches Planner pour recevoir et suivre les demandes. Ce circuit
             alimentait un tableau de bord de suivi, dont le projet « Suivi des projets » est une version aux
             données fictives.
