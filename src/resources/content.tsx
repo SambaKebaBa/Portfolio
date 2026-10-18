@@ -196,7 +196,7 @@ const about: About = {
       {
         title: "Power BI",
         description: <>Rapports de bout en bout, de la modélisation à la publication, dans Desktop et Service.</>,
-        tags: [{ name: "DAX" }, { name: "Power Query (M)" }, { name: "Modélisation" }, { name: "Fonctions DAX (UDF)" }, { name: "Visuels SVG / HTML" }, { name: "Thèmes JSON" }, { name: "Power BI Service" }],
+        tags: [{ name: "DAX" }, { name: "Power Query (M)" }, { name: "Modélisation" }, { name: "Fonctions DAX (UDF)" }, { name: "Visuels SVG / HTML" }, { name: "Thèmes JSON" }, { name: "Power BI Service" }, { name: "GitHub" }],
         images: [],
       },
       {
