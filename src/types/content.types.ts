@@ -183,6 +183,8 @@ export interface About extends BasePageConfig {
       name: string;
       /** Description of studies */
       description: React.ReactNode;
+      /** Year or period, shown at the top right */
+      date?: string;
     }>;
   };
   /** Certifications section */

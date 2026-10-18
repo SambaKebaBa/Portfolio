@@ -38,7 +38,7 @@ export default function About() {
     {
       title: about.work.title,
       display: about.work.display,
-      items: about.work.experiences.map((experience) => experience.company),
+      items: about.work.experiences.map((experience) => experience.role),
     },
     {
       title: about.studies.title,
@@ -217,15 +217,15 @@ export default function About() {
                 {about.work.experiences.map((experience, index) => (
                   <Column key={`${experience.company}-${experience.role}-${index}`} fillWidth>
                     <Row fillWidth horizontal="between" vertical="end" marginBottom="4">
-                      <Text id={experience.company} variant="heading-strong-l">
-                        {experience.company}
+                      <Text id={experience.role} variant="heading-strong-l">
+                        {experience.role}
                       </Text>
                       <Text variant="heading-default-xs" onBackground="neutral-weak">
                         {experience.timeframe}
                       </Text>
                     </Row>
                     <Text variant="body-default-s" onBackground="brand-weak" marginBottom="m">
-                      {experience.role}
+                      {experience.company}
                     </Text>
                     <Column as="ul" gap="16">
                       {experience.achievements.map(
@@ -275,10 +275,17 @@ export default function About() {
               <Column fillWidth gap="l" marginBottom="40">
                 {about.studies.institutions.map((institution, index) => (
                   <Column key={`${institution.name}-${index}`} fillWidth gap="4">
-                    <Text id={institution.name} variant="heading-strong-l">
-                      {institution.name}
-                    </Text>
-                    <Text variant="heading-default-xs" onBackground="neutral-weak">
+                    <Row fillWidth horizontal="between" vertical="end">
+                      <Text id={institution.name} variant="heading-strong-l">
+                        {institution.name}
+                      </Text>
+                      {institution.date && (
+                        <Text variant="heading-default-xs" onBackground="neutral-weak">
+                          {institution.date}
+                        </Text>
+                      )}
+                    </Row>
+                    <Text variant="body-default-s" onBackground="brand-weak">
                       {institution.description}
                     </Text>
                   </Column>
@@ -356,11 +363,16 @@ export default function About() {
               <Column fillWidth gap="l">
                 {about.certifications.items.map((cert, index) => (
                   <Column key={`${cert.name}-${index}`} fillWidth gap="8">
-                    <Text id={cert.name} variant="heading-strong-l">
-                      {cert.name}
-                    </Text>
-                    <Text variant="heading-default-xs" onBackground="neutral-weak">
-                      {cert.issuer} — {cert.date}
+                    <Row fillWidth horizontal="between" vertical="end">
+                      <Text id={cert.name} variant="heading-strong-l">
+                        {cert.name}
+                      </Text>
+                      <Text variant="heading-default-xs" onBackground="neutral-weak">
+                        {cert.date}
+                      </Text>
+                    </Row>
+                    <Text variant="body-default-s" onBackground="brand-weak">
+                      {cert.issuer}
                     </Text>
                     {cert.link && (
                       <SmartLink

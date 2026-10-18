@@ -144,12 +144,14 @@ const about: About = {
     title: "Études",
     institutions: [
       {
-        name: "Université du Québec en Outaouais",
-        description: <>Baccalauréat en informatique (2023).</>,
+        name: "Baccalauréat en informatique",
+        description: <>Université du Québec en Outaouais</>,
+        date: "2023",
       },
       {
-        name: "Groupe scolaire Educazur, Dakar",
-        description: <>DEC en sciences mathématiques et expérimentales (2019).</>,
+        name: "DEC en sciences mathématiques et expérimentales",
+        description: <>Groupe scolaire Educazur, Dakar</>,
+        date: "2019",
       },
     ],
   },
@@ -193,26 +195,26 @@ const about: About = {
     skills: [
       {
         title: "Power BI",
-        description: (
-          <>DAX avancé, Power Query (M), fonctions personnalisées (UDF), thèmes JSON, visuels SVG / HTML / JS. Desktop &amp; Service.</>
-        ),
-        tags: [],
+        description: <>Rapports de bout en bout, de la modélisation à la publication, dans Desktop et Service.</>,
+        tags: [{ name: "DAX" }, { name: "Power Query (M)" }, { name: "Modélisation" }, { name: "Fonctions DAX (UDF)" }, { name: "Visuels SVG / HTML" }, { name: "Thèmes JSON" }, { name: "Power BI Service" }],
         images: [],
       },
       {
-        title: "Données & plateformes",
-        description: (
-          <>Databricks (architecture médaillon), Microsoft Fabric, SQL. Migrations depuis SAP Web Intelligence et SAP Analytics Cloud.</>
-        ),
-        tags: [],
+        title: "Données",
+        description: <>Interroger, préparer et transformer les données avant le rapport.</>,
+        tags: [{ name: "SQL" }, { name: "Databricks" }, { name: "Architecture médaillon" }, { name: "Microsoft Fabric" }, { name: "Python" }],
         images: [],
       },
       {
-        title: "Automatisation & gouvernance",
-        description: (
-          <>Power Automate, Power Apps, Microsoft Forms, Planner, Lists, alertes automatisées. Sécurité RLS / OLS, Python, bonnes pratiques de modélisation.</>
-        ),
-        tags: [],
+        title: "Automatisation Microsoft 365",
+        description: <>Des flux qui recueillent les demandes, alertent et alimentent les tableaux de bord.</>,
+        tags: [{ name: "Power Automate" }, { name: "Power Apps" }, { name: "Microsoft Forms" }, { name: "Planner" }, { name: "Lists" }, { name: "SharePoint" }],
+        images: [],
+      },
+      {
+        title: "Migration & gouvernance",
+        description: <>Migrer des rapports existants et garder un environnement Power BI propre et sécurisé.</>,
+        tags: [{ name: "Migration SAP WebI vers Power BI" }, { name: "Migration SAP Analytics Cloud vers Power BI" }, { name: "Sécurité RLS / OLS" }, { name: "Espaces de travail" }, { name: "Gabarits d'entreprise" }],
         images: [],
       },
     ],
