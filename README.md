@@ -32,7 +32,7 @@ En local, les images peuvent sembler cassées : leur chemin commence par `/Portf
 2. Créer la page `src/content/projects/<slug>.mdx` (titre, date, résumé, lien « Publier sur le web », description).
 3. Ajouter la capture à la galerie : liste `gallery.images` de `src/resources/content.tsx`.
 
-Le rapport le plus récent (`publishedAt`) apparaît en premier. Le rapport en vedette de l'accueil se choisit dans `home.featured` de `src/resources/content.tsx`.
+Le rapport en vedette se choisit dans `home.featured` de `src/resources/content.tsx` (lien `/work/<slug>`) : il s'affiche en bandeau et en grande carte sur l'accueil, et en tête de la liste des projets. Les autres rapports suivent, du plus récent au plus ancien (`publishedAt`).
 
 ### Ajouter une certification
 1. Mettre l'image dans `public/certifications/<slug>/cover.jpg`.

@@ -1,4 +1,5 @@
 import { getPosts } from "@/utils/utils";
+import { home } from "@/resources";
 import { Column } from "@once-ui-system/core";
 import { ProjectCard } from "./ProjectCard";
 
@@ -15,7 +16,12 @@ export function Projects({ range, exclude }: ProjectsProps) {
     allProjects = allProjects.filter((post) => !exclude.includes(post.slug));
   }
 
+  // Le rapport en vedette de l'accueil (home.featured) passe en premier, puis les autres du plus récent au plus ancien.
+  const featuredSlug =
+    home.featured?.display && home.featured.href ? home.featured.href.split("/").filter(Boolean).pop() : undefined;
   const sortedProjects = allProjects.sort((a, b) => {
+    if (a.slug === featuredSlug) return -1;
+    if (b.slug === featuredSlug) return 1;
     return new Date(b.metadata.publishedAt).getTime() - new Date(a.metadata.publishedAt).getTime();
   });
 

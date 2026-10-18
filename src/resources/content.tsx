@@ -214,7 +214,7 @@ const about: About = {
       {
         title: "Migration & gouvernance",
         description: <>Migrer des rapports existants et garder un environnement Power BI propre et sécurisé.</>,
-        tags: [{ name: "Migration SAP WebI vers Power BI" }, { name: "Migration SAP Analytics Cloud vers Power BI" }, { name: "Sécurité RLS / OLS" }, { name: "Espaces de travail" }, { name: "Gabarits d'entreprise" }],
+        tags: [{ name: "Migration SAP WebI vers Power BI" }, { name: "Migration SAP Analytics Cloud vers Power BI" }, { name: "Sécurité RLS / OLS / PLS" }, { name: "Espaces de travail" }, { name: "Gabarits d'entreprise" }],
         images: [],
       },
     ],
