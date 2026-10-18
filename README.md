@@ -65,7 +65,7 @@ Portfolio/
 
 ## 👤 Auteur
 
-**SAMBA KEBA BA** · [LinkedIn](https://www.linkedin.com/in/sambak%C3%A9baba/) · [Mes rapports Power BI](https://github.com/SambaKebaBa/Power-BI-Personnel)
+**SAMBA KEBA BA** · [LinkedIn](https://www.linkedin.com/in/sambak%C3%A9baba/)
 
 ---
 
