@@ -234,6 +234,7 @@ const gallery: Gallery = {
   title: `Galerie – ${person.name}`,
   description: `Aperçus de rapports par ${person.name}`,
   images: [
+    { src: "/Portfolio/projects/astravale-sante-serveurs-sql/cover.png", alt: "AstraVale : santé des serveurs SQL", orientation: "horizontal" },
     { src: "/Portfolio/projects/boutique-football-ventes-clients/cover.png", alt: "Boutique de football en ligne : ventes et clients", orientation: "horizontal" },
     { src: "/Portfolio/projects/suivi-meteo/cover.png", alt: "Dashboard Suivi météo", orientation: "horizontal" },
     { src: "/Portfolio/projects/analyse-ventes/cover.png", alt: "Dashboard Ventes & Performance", orientation: "horizontal" },
