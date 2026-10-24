@@ -234,6 +234,7 @@ const gallery: Gallery = {
   title: `Galerie – ${person.name}`,
   description: `Aperçus de rapports par ${person.name}`,
   images: [
+    { src: "/Portfolio/projects/douzieme-homme-jouer-a-domicile/cover.png", alt: "Le douzième homme : jouer à domicile vaut-il encore quelque chose ?", orientation: "horizontal" },
     { src: "/Portfolio/projects/premier-league-2025-26-saison/cover.png", alt: "Premier League 2025/26 : la saison en détail", orientation: "horizontal" },
     { src: "/Portfolio/projects/astravale-sante-serveurs-sql/cover.png", alt: "AstraVale : santé des serveurs SQL", orientation: "horizontal" },
     { src: "/Portfolio/projects/boutique-football-ventes-clients/cover.png", alt: "Boutique de football en ligne : ventes et clients", orientation: "horizontal" },
