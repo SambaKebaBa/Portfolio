@@ -45,14 +45,14 @@ const home: Home = {
     display: true,
     title: (
       <Row gap="12" vertical="center">
-        <strong className="ml-4">Boutique de football en ligne</strong>{" "}
+        <strong className="ml-4">Premier League 2025/26</strong>{" "}
         <Line background="brand-alpha-strong" vert height="20" />
         <Text marginRight="4" onBackground="brand-medium">
           Rapport en vedette
         </Text>
       </Row>
     ),
-    href: "/work/boutique-football-ventes-clients",
+    href: "/work/premier-league-2025-26-saison",
   },
   subline: (
     <>
@@ -234,6 +234,7 @@ const gallery: Gallery = {
   title: `Galerie – ${person.name}`,
   description: `Aperçus de rapports par ${person.name}`,
   images: [
+    { src: "/Portfolio/projects/premier-league-2025-26-saison/cover.png", alt: "Premier League 2025/26 : la saison en détail", orientation: "horizontal" },
     { src: "/Portfolio/projects/astravale-sante-serveurs-sql/cover.png", alt: "AstraVale : santé des serveurs SQL", orientation: "horizontal" },
     { src: "/Portfolio/projects/boutique-football-ventes-clients/cover.png", alt: "Boutique de football en ligne : ventes et clients", orientation: "horizontal" },
     { src: "/Portfolio/projects/suivi-meteo/cover.png", alt: "Dashboard Suivi météo", orientation: "horizontal" },
