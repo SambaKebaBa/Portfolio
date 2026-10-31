@@ -45,14 +45,14 @@ const home: Home = {
     display: true,
     title: (
       <Row gap="12" vertical="center">
-        <strong className="ml-4">The Monster Under the Bed</strong>{" "}
+        <strong className="ml-4">Premier League 2025/26</strong>{" "}
         <Line background="brand-alpha-strong" vert height="20" />
         <Text marginRight="4" onBackground="brand-medium">
           Rapport en vedette
         </Text>
       </Row>
     ),
-    href: "/work/monster-under-the-bed-moved",
+    href: "/work/premier-league-2025-26-saison",
   },
   subline: (
     <>
