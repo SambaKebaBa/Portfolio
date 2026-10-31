@@ -3,10 +3,10 @@
 import { Media, MasonryGrid } from "@once-ui-system/core";
 import { gallery } from "@/resources";
 
-export default function GalleryView() {
+export default function GalleryView({ images = gallery.images }: { images?: typeof gallery.images }) {
   return (
     <MasonryGrid columns={2} s={{ columns: 1 }}>
-      {gallery.images.map((image, index) => (
+      {images.map((image, index) => (
         <Media
           enlarge
           priority={index < 10}
