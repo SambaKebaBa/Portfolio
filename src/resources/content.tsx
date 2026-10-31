@@ -45,14 +45,14 @@ const home: Home = {
     display: true,
     title: (
       <Row gap="12" vertical="center">
-        <strong className="ml-4">Premier League 2025/26</strong>{" "}
+        <strong className="ml-4">The Monster Under the Bed</strong>{" "}
         <Line background="brand-alpha-strong" vert height="20" />
         <Text marginRight="4" onBackground="brand-medium">
           Rapport en vedette
         </Text>
       </Row>
     ),
-    href: "/work/premier-league-2025-26-saison",
+    href: "/work/monster-under-the-bed-moved",
   },
   subline: (
     <>
@@ -234,6 +234,7 @@ const gallery: Gallery = {
   title: `Galerie – ${person.name}`,
   description: `Aperçus de rapports par ${person.name}`,
   images: [
+    { src: "/Portfolio/projects/monster-under-the-bed-moved/cover.png", alt: "The Monster Under the Bed Didn't Leave. It Moved.", orientation: "horizontal" },
     { src: "/Portfolio/projects/douzieme-homme-jouer-a-domicile/cover.png", alt: "Le douzième homme : jouer à domicile vaut-il encore quelque chose ?", orientation: "horizontal" },
     { src: "/Portfolio/projects/premier-league-2025-26-saison/cover.png", alt: "Premier League 2025/26 : la saison en détail", orientation: "horizontal" },
     { src: "/Portfolio/projects/astravale-sante-serveurs-sql/cover.png", alt: "AstraVale : santé des serveurs SQL", orientation: "horizontal" },
